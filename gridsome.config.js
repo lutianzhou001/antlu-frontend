@@ -13,6 +13,9 @@ module.exports = {
       use: 'gridsome-plugin-tailwindcss',
     },
     {
+      use: 'gridsome-plugin-modal',
+    },
+    {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Documentation', // Required
