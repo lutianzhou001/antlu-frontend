@@ -79,7 +79,7 @@ export default {
   methods: {
     async changeStatus(id) {
       try {
-        const results = await axios.post('http://106.15.104.76:3001/orders/changeStatus', {
+        const results = await axios.post('https://www.neophura.top/orders/changeStatus', {
           "pwd": this.pwd,
           "id": id,
         })
@@ -91,7 +91,7 @@ export default {
     },
     async queryUnfinished() {
       try {
-        const results = await axios.post('http://106.15.104.76:3001/orders/getUnfinished')
+        const results = await axios.post('https://www.neophura.top/orders/getUnfinished')
         this.pending.meat = results.data.data.totalMeat;
         this.pending.eggAndMeat = results.data.data.totalEggAndMeat;
       } catch (e) {
@@ -101,7 +101,7 @@ export default {
     async queryOrders(status) {
       this.status = status
       try {
-        const results = await axios.post('http://106.15.104.76:3001/orders/query', {
+        const results = await axios.post('https://www.neophura.top/orders/query', {
           "limit": 2000,
           "offset": 0,
           "notFinished": status,

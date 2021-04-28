@@ -196,7 +196,7 @@ export default {
       } else if (this.address == null) {
         this.errMessage = '地址必须填写'
       } else {
-        let res = await axios.post("http://106.15.104.76:3001/orders/create",{
+        let res = await axios.post("https://www.neophura.top/orders/create",{
           "contact": this.contact,
           "address": this.address,
           "name": this.name,
