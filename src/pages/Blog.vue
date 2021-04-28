@@ -79,7 +79,7 @@ export default {
   methods: {
     async changeStatus(id) {
       try {
-        const results = await axios.post('http://127.0.0.1:3001/orders/changeStatus', {
+        const results = await axios.post('http://13.89.121.207:3001/orders/changeStatus', {
           "pwd": this.pwd,
           "id": id,
         })
@@ -91,7 +91,7 @@ export default {
     },
     async queryUnfinished() {
       try {
-        const results = await axios.post('http://127.0.0.1:3001/orders/getUnfinished')
+        const results = await axios.post('http://13.89.121.207:3001/orders/getUnfinished')
         this.pending.meat = results.data.data.totalMeat;
         this.pending.eggAndMeat = results.data.data.totalEggAndMeat;
       } catch (e) {
@@ -101,8 +101,8 @@ export default {
     async queryOrders(status) {
       this.status = status
       try {
-        const results = await axios.post('http://127.0.0.1:3001/orders/query', {
-          "limit": 20,
+        const results = await axios.post('http://13.89.121.207:3001/orders/query', {
+          "limit": 2000,
           "offset": 0,
           "notFinished": status,
           "pwd": this.pwd,
