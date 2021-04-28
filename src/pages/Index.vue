@@ -45,7 +45,7 @@
           </li>
           <li class="checkmark">
             <div>坚持不涨价</div>
-            <div class="text-lg text-gray-600">制作第11年，坚持大肉粽和蛋黄肉粽价格均为8元/只</div>
+            <div class="text-lg text-gray-600">制作第11年，坚持大肉粽和蛋黄肉粽价格均为6元/只</div>
           </li>
 
         </ul>
@@ -62,7 +62,7 @@
             <svg width="170px" height="170px"><use xlink:href="#dots-triangle" /></svg>
           </div>
 
-          <p class="mb-12">我们在此只收集订购信息，并不收款，小心有人冒充收款人员工，谨防上当。苏州市区范围内（含松陵镇）由陆阿姨配送，其他范围内顺丰到付。</p>
+          <p class="mb-12">我们在此只收集订购信息，并不收款，小心有人冒充收款人员工，谨防上当。苏州市区范围内（含松陵镇）由陆阿姨配送，其他范围内顺丰到付[不包邮]。</p>
 
           <div class="flex flex-wrap mb-6 -mx-4">
             <div class="w-full md:w-1/2 mb-6 md:mb-0 px-4">
@@ -72,10 +72,10 @@
 
               <div class="flex items-center">
                 <div>
-                  <button class="text-5xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementMeat">-</button>
+                  <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementMeat">-</button>
                 </div>
-                <span class="text-5xl w-32 text-center ml-8">{{ meatCount }}</span>
-                <button class="text-5xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementMeat">+</button>
+                <span class="text-3xl w-32 text-center ml-8">{{ meatCount }}</span>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementMeat">+</button>
               </div>
 
               <!--                  <input type="number" name="meat" id="meat" placeholder="需要的肉粽的数量" class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
@@ -86,15 +86,23 @@
                 您需要的蛋黄肉粽的数量
               </label>
 
+
+
               <div class="flex items-center">
                 <div>
-                  <button class="text-5xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementEggMeat">-</button>
+                  <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementEggMeat">-</button>
                 </div>
-                <span class="text-5xl w-32 text-center ml-8">{{ eggMeatCount }}</span>
-                <button class="text-5xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementEggMeat">+</button>
+                <span class="text-3xl w-32 text-center ml-8">{{ eggMeatCount }}</span>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementEggMeat">+</button>
               </div>
               <!--                  <input type="number" name="eggAndMeat" id="eggAndMeat" placeholder="需要的蛋黄肉粽的数量"  class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
             </div>
+          </div>
+
+          <div class="w-full mb-12">
+            <label class="block text-copy-primary mb-2" for="message">
+              预计费用 {{price()}} 元（不包含邮费）
+            </label>
           </div>
 
           <div class="text-lg sm:text-lg mb-16">
@@ -167,6 +175,7 @@ export default {
       contact: null,
       address: null,
       errMessage:null,
+      price: ()=>{ return this.meatCount * 6 + this.eggMeatCount * 6},
     }
   },
   methods: {

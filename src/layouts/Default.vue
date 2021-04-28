@@ -24,10 +24,7 @@
             <theme-switcher :theme="theme" @themeChanged="updateTheme" />
           </li>
           <li>
-            <g-link to="/docs" class="text-copy-primary hover:text-gray-600" data-cypress="docs">Docs</g-link>
-          </li>
-          <li>
-            <g-link to="/blog" class="text-copy-primary hover:text-gray-600" data-cypress="blog">Blog</g-link>
+            <g-link to="/blog" class="text-copy-primary hover:text-gray-600" data-cypress="blog">后台管理</g-link>
           </li>
         </ul>
       </nav>
