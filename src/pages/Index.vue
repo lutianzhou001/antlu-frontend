@@ -71,10 +71,10 @@
               </label>
               <div class="flex items-center">
                 <div>
-                  <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementEggMeat">-</button>
+                  <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementMeat">-</button>
                 </div>
                 <span class="text-3xl w-32 text-center ml-8">{{ meatCount }}</span>
-                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementEggMeat">+</button>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementMeat">+</button>
               </div>
               <!--                  <input type="number" name="eggAndMeat" id="eggAndMeat" placeholder="需要的蛋黄肉粽的数量"  class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
             </div>
