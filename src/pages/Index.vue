@@ -45,7 +45,7 @@
           </li>
           <li class="checkmark">
             <div>坚持不涨价</div>
-            <div class="text-lg text-gray-600">制作第11年，坚持大肉粽和蛋黄肉粽价格均为6元/只</div>
+            <div class="text-lg text-gray-600">制作第11年，坚持大肉粽和蛋黄肉粽价格均为6元/只为一只粽子，其他品类低至4元。</div>
           </li>
 
         </ul>
@@ -65,20 +65,18 @@
           <p class="mb-12">我们在此只收集订购信息，并不收款，小心有人冒充收款人员工，谨防上当。苏州市区范围内（含松陵镇）由陆阿姨配送，其他范围内顺丰到付[不包邮]。</p>
 
           <div class="flex flex-wrap mb-6 -mx-4">
-            <div class="w-full md:w-1/2 mb-6 md:mb-0 px-4">
-
-              <label class="block mb-2 text-copy-primary" for="name">
-                您需要的肉粽数量
+            <div class="w-full px-4 md:w-1/2">
+              <label class="block text-copy-primary mb-2" for="name">
+                您需要的肉粽的数量
               </label>
               <div class="flex items-center">
                 <div>
-                  <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementMeat">-</button>
+                  <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementEggMeat">-</button>
                 </div>
                 <span class="text-3xl w-32 text-center ml-8">{{ meatCount }}</span>
-                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementMeat">+</button>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementEggMeat">+</button>
               </div>
-
-              <!--                  <input type="number" name="meat" id="meat" placeholder="需要的肉粽的数量" class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
+              <!--                  <input type="number" name="eggAndMeat" id="eggAndMeat" placeholder="需要的蛋黄肉粽的数量"  class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
             </div>
 
             <div class="w-full px-4 md:w-1/2">
