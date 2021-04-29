@@ -2,7 +2,7 @@
   <Layout>
     <div class="overflow-x-hidden">
       <div id="projects" style="position: relative; top: -40px; left: 0"/>
-      <div class="projects container-inner mx-auto text-xl border-t border-gray-500 border-b py-16 mb-16 relative">
+      <div class="projects container-inner mx-auto text-lg border-t border-gray-500 border-b py-16 mb-16 relative">
 
         <div class="w-full px-4 md:w-1/2">
           <label class="block text-copy-primary mb-2" for="email">
@@ -15,15 +15,20 @@
           <input type="button" value="查询已完成订单" @click ="queryOrders(false)" class="block bg-green-700 hover:bg-green-800 text-white text-sm font-semibold tracking-wide uppercase shadow rounded cursor-pointer px-6 py-3">
         </div>
 
-        <h2 class="font-bold mb-6">订购信息: 您还有{{pending.meat}}只肉粽和{{pending.eggAndMeat}}只蛋黄肉粽没有制作完成</h2>
+        <h2 class="font-bold mb-6">订购信息: 还有{{pending.meat}}只肉粽和{{pending.eggAndMeat}}只蛋黄肉粽{{pending.dousha}}只豆沙{{pending.mizao}}只蜜枣{{pending.jianshui}}只碱水没有制作完成</h2>
 
 
-        <ul class="text-lg sm:text-xl space-y-6">
+        <ul class="text-lg sm:text-sm space-y-6">
           <table class="table table-auto">
             <thead>
             <tr>
               <th>姓名</th>
               <th>地址</th>
+              <th>肉</th>
+              <th>蛋黄肉</th>
+              <th>豆沙</th>
+              <th>蜜枣</th>
+              <th>碱水</th>
               <th>联系方式</th>
               <th>是否制作完成</th>
               <th>修改订单状态</th>
@@ -33,6 +38,11 @@
             <tr v-for="item in orders" :key="item.id">
               <td>{{ item.name }}</td>
               <td>{{ item.address }}</td>
+              <td>{{ item.meat }}</td>
+              <td>{{ item.eggAndMeat }}</td>
+              <td>{{ item.dousha }}</td>
+              <td>{{ item.mizao }}</td>
+              <td>{{ item.jianshui }}</td>
               <td>{{ item.contact }}</td>
               <td>{{map.boolean[item.status]}}</td>
               <button
@@ -70,6 +80,9 @@ export default {
       pending: {
         meat: null,
         eggAndMeat: null,
+        jianshui: null,
+        dousha: null,
+        mizao: null,
       }
     }
   },
@@ -94,6 +107,9 @@ export default {
         const results = await axios.post('https://www.neophura.top/orders/getUnfinished')
         this.pending.meat = results.data.data.totalMeat;
         this.pending.eggAndMeat = results.data.data.totalEggAndMeat;
+        this.pending.dousha = results.data.data.totalDousha;
+        this.pending.mizao = results.data.data.totalMizao;
+        this.pending.jianshui = results.data.data.totalJianshui;
       } catch (e) {
         console.log(e)
       }

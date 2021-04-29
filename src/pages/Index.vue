@@ -66,10 +66,10 @@
 
           <div class="flex flex-wrap mb-6 -mx-4">
             <div class="w-full md:w-1/2 mb-6 md:mb-0 px-4">
+
               <label class="block mb-2 text-copy-primary" for="name">
                 您需要的肉粽数量
               </label>
-
               <div class="flex items-center">
                 <div>
                   <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementMeat">-</button>
@@ -85,9 +85,6 @@
               <label class="block text-copy-primary mb-2" for="email">
                 您需要的蛋黄肉粽的数量
               </label>
-
-
-
               <div class="flex items-center">
                 <div>
                   <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementEggMeat">-</button>
@@ -97,6 +94,50 @@
               </div>
               <!--                  <input type="number" name="eggAndMeat" id="eggAndMeat" placeholder="需要的蛋黄肉粽的数量"  class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
             </div>
+
+            <div class="w-full px-4 md:w-1/2">
+            <label class="block mb-2 text-copy-primary" for="name">
+              您需要的豆沙粽的数量
+            </label>
+            <div class="flex items-center">
+              <div>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementDousha">-</button>
+              </div>
+              <span class="text-3xl w-32 text-center ml-8">{{ doushaCount }}</span>
+              <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementDousha">+</button>
+            </div>
+
+            <!--                  <input type="number" name="meat" id="meat" placeholder="需要的肉粽的数量" class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
+          </div>
+
+          <div class="w-full px-4 md:w-1/2">
+            <label class="block text-copy-primary mb-2" for="email">
+              您需要蜜枣粽的数量
+            </label>
+            <div class="flex items-center">
+              <div>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementMizao">-</button>
+              </div>
+              <span class="text-3xl w-32 text-center ml-8">{{ mizaoCount }}</span>
+              <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementMizao">+</button>
+            </div>
+            <!--                  <input type="number" name="eggAndMeat" id="eggAndMeat" placeholder="需要的蛋黄肉粽的数量"  class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
+          </div>
+
+          <div class="w-full px-4 md:w-1/2">
+            <label class="block text-copy-primary mb-2" for="email">
+              您需要碱水粽的数量
+            </label>
+            <div class="flex items-center">
+              <div>
+                <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2" @click="decrementJianshui">-</button>
+              </div>
+              <span class="text-3xl w-32 text-center ml-8">{{ jianshuiCount }}</span>
+              <button class="text-3xl w-16 bg-green-900 hover:bg-green-800 text-white rounded px-4 py-2 ml-8" @click="incrementJianshui">+</button>
+            </div>
+            <!--                  <input type="number" name="eggAndMeat" id="eggAndMeat" placeholder="需要的蛋黄肉粽的数量"  class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-green-700 mb-2 p-4" required>-->
+          </div>
+
           </div>
 
           <div class="w-full mb-12">
@@ -171,11 +212,14 @@ export default {
     return {
       meatCount: 0,
       eggMeatCount: 0,
+      doushaCount: 0,
+      mizaoCount: 0,
+      jianshuiCount: 0,
       name: null,
       contact: null,
       address: null,
       errMessage:null,
-      price: ()=>{ return this.meatCount * 6 + this.eggMeatCount * 6},
+      price: ()=>{ return this.meatCount * 6 + this.eggMeatCount * 6 + this.doushaCount * 4 + this.jianshuiCount * 4 +this.mizaoCount * 4},
     }
   },
   methods: {
@@ -195,8 +239,32 @@ export default {
         this.eggMeatCount--
       }
     },
+    incrementDousha() {
+      this.doushaCount++
+    },
+    decrementDousha() {
+      if (this.doushaCount > 0) {
+        this.doushaCount--
+      }
+    },
+    incrementMizao() {
+        this.mizaoCount++
+    },
+    decrementMizao() {
+      if (this.mizaoCount > 0) {
+        this.mizaoCount--
+      }
+    },
+    incrementJianshui() {
+        this.jianshuiCount++
+    },
+    decrementJianshui() {
+      if (this.jianshuiCount > 0) {
+        this.jianshuiCount--
+      }
+    },
     async checkAndSubmit() {
-      if (this.eggMeatCount + this.meatCount == 0) {
+      if (this.eggMeatCount + this.meatCount + this.doushaCount + this.mizaoCount + this.jianshuiCount == 0) {
           this.errMessage = '请输入正确的数量'
       } else if (this.name == null ) {
         this.errMessage = '姓名必须填写'
@@ -211,6 +279,9 @@ export default {
           "name": this.name,
           "meat": this.meatCount,
           "eggAndMeat": this.eggMeatCount,
+          "jianshui": this.jianshuiCount,
+          "mizao": this.mizaoCount,
+          "dousha": this.doushaCount,
         })
         if (res.data.success == true) {
           this.errMessage = null;
